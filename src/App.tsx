@@ -34,9 +34,16 @@ function App() {
     const newTodo = { text, complete: false };
     setTodos([...todos, newTodo]);
   };
+
+  const removeTodo = (selectedTodo: Todo) => {
+    const newTodos = todos.filter((todo) => {
+      return todo.text !== selectedTodo.text;
+    });
+    setTodos(newTodos);
+  };
   return (
     <>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
       <AddTodoForm addTodo={addTodo} />
     </>
   );
